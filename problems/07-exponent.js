@@ -21,9 +21,28 @@ exponent(5, 5); // 3125
 ***********************************************************************/
 
 function exponent(num, power) {
-    // Your code here 
+    //base case: power <=1
+    //recursive case: return exponent(num, power -1)
+    //or
+    //if neg exp: return recip of num * above; change sign
+    if (power === 0) return 1
+    
+    if (power < 0) return exponent(num, power + 1) / num
+    else {
+        return num * exponent(num, power - 1)
+    }
+    // if (power < 0) return exponent(num, power + 1) / num
+    // if (power < 0) return exponent(num, 1/power)
+    // if (power < 0) return 1/(num*num)
+
+    // return exponent(num, power - 1) * num
 }
-  
+
+// debugger
+// exponent(3, 2)
+console.log(exponent(3, 2)); // 9
+console.log(exponent(2, -2)); // 1/4 (or 0.25)
+console.log(exponent(5, 5)); // 3125
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
     module.exports = exponent;
